@@ -1,0 +1,42 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "BackupStatus">
+<!ENTITY author    "mattohm">
+<!ENTITY version   "2024.03.01">
+<!ENTITY launch    "Settings/BackupStatus">
+<!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/BackupStatus-unRaid/main">
+<!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
+<!ENTITY pkgURL    "&gitURL;/packages">
+<!ENTITY plgPATH   "/boot/config/plugins/&name;">
+<!ENTITY plgNAME   "&name;-&version;-x86_64-1">
+<!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+]>
+
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
+
+
+
+<FILE Name="&plgPATH;/BackupStatus.txz" Min="6.2" Run="/sbin/upgradepkg --install-new">
+<URL>&pkgURL;/BackupStatus.txz</URL>
+<MD5>41a99977c87e2089ac2387f2a7b7956b</MD5>
+</FILE>
+
+
+<!--
+The 'remove' script.
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+removepkg &plgPATH;/*.txz
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been removed."
+echo " Copyright 2015-2019, &author;"
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+</PLUGIN>
