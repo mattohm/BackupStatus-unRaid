@@ -11,7 +11,7 @@
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
 
-<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;">
 
 <FILE Name="&plgPATH;/BackupStatus.txz" Min="6.2" Run="/sbin/upgradepkg --install-new">
 <URL>&pkgURL;/BackupStatus.txz</URL>
