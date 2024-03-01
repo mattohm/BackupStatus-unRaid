@@ -13,25 +13,24 @@
 
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
-
-
 <FILE Name="&plgPATH;/BackupStatus.txz" Min="6.2" Run="/sbin/upgradepkg --install-new">
 <URL>&pkgURL;/BackupStatus.txz</URL>
 <MD5>41a99977c87e2089ac2387f2a7b7956b</MD5>
 </FILE>
 
-
 <!--
 The 'remove' script.
 -->
+
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
+
 removepkg &plgPATH;/*.txz
 
 echo ""
 echo "-----------------------------------------------------------"
 echo " &name; has been removed."
-echo " Copyright 2015-2019, &author;"
+echo " Copyright 2024, &author;"
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
