@@ -3,7 +3,6 @@
 <!ENTITY name      "BackupStatus">
 <!ENTITY author    "mattohm">
 <!ENTITY version   "2024.03.01">
-<!ENTITY launch    "Settings/BackupStatus">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/BackupStatus-unRaid/main">
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
 <!ENTITY pkgURL    "&gitURL;/packages">
