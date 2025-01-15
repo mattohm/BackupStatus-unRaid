@@ -8,7 +8,7 @@
 <!ENTITY pkgURL    "&gitURL;/packages">
 <!ENTITY plgPATH   "/boot/config/plugins/&name;">
 <!ENTITY plgNAME   "&name;-&version;">
-<!ENTITY bundleURL "https://github.com/mattohm/BackupStatus-unRaid/raw/refs/heads/main/packages/BackupStatus-&version;.txz
+<!ENTITY bundleURL "https://github.com/mattohm/BackupStatus-unRaid/raw/refs/heads/main/packages/BackupStatus-&version;.txz>
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 <!ENTITY md5bundle "d3593a0446b8ba8f8cfdc42a5b9f3c6f">
 ]>
