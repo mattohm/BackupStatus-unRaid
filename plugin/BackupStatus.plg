@@ -4,20 +4,18 @@
 <!ENTITY author    "mattohm">
 <!ENTITY version   "2025.01.15">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/BackupStatus-unRaid/main">
-<!ENTITY pluginURL "https://raw.githubusercontent.com/mattohm/BackupStatus-unRaid/refs/heads/main/plugin/BackupStatus.plg">
+<!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
 <!ENTITY pkgURL    "&gitURL;/packages">
 <!ENTITY plgPATH   "/boot/config/plugins/&name;">
-<!ENTITY plgNAME   "&name;-&version;">
-<!ENTITY bundleURL "https://raw.githubusercontent.com/mattohm/BackupStatus-unRaid/raw/refs/heads/main/packages/BackupStatus-&version;.txz">
+<!ENTITY plgNAME   "&name;-&version;-x86_64-1">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
-<!ENTITY md5bundle "d3593a0446b8ba8f8cfdc42a5b9f3c6f">
 ]>
 
 <PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;">
 
-<FILE Name="/boot/config/plugins/BackupStatus.plg" Min="6.2" Run="/sbin/upgradepkg --install-new">
-<URL>https://raw.githubusercontent.com/mattohm/BackupStatus-unRaid/master/packages/BackupStatus-2025.01.15.txz</URL>
-<MD5>&md5bundle;</MD5>
+<FILE Name="&plgPATH;/BackupStatus.txz" Min="6.2" Run="/sbin/upgradepkg --install-new">
+<URL>&pkgURL;/BackupStatus-&version;.txz</URL>
+<MD5>d3593a0446b8ba8f8cfdc42a5b9f3c6f</MD5>
 </FILE>
 
 <!--
@@ -32,7 +30,7 @@ removepkg &plgPATH;/*.txz
 echo ""
 echo "-----------------------------------------------------------"
 echo " &name; has been removed."
-echo " Copyright 2025, &author;"
+echo " Copyright 2024, &author;"
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
