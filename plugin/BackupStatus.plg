@@ -8,7 +8,7 @@
 <!ENTITY pkgURL    "&gitURL;/packages">
 <!ENTITY plgPATH   "/boot/config/plugins/&name;">
 <!ENTITY plgNAME   "&name;-&version;">
-<!ENTITY bundleURL "https://github.com/mattohm/BackupStatus-unRaid/raw/refs/heads/main/packages/BackupStatus-&version;.txz">
+<!ENTITY bundleURL "https://raw.githubusercontent.com/mattohm/BackupStatus-unRaid/raw/refs/heads/main/packages/BackupStatus-&version;.txz">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 <!ENTITY md5bundle "d3593a0446b8ba8f8cfdc42a5b9f3c6f">
 ]>
@@ -16,7 +16,7 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;">
 
 <FILE Name="/boot/config/plugins/BackupStatus/BackupStatus.plg Min="6.2" Run="/sbin/upgradepkg --install-new">
-<URL>https://github.com/mattohm/BackupStatus-unRaid/raw/refs/heads/main/packages/BackupStatus-2025.01.15.txz</URL>
+<URL>https://raw.githubusercontent.com/mattohm/BackupStatus-unRaid/refs/heads/main/packages/BackupStatus-2025.01.15.txz</URL>
 <MD5>&md5bundle;</MD5>
 </FILE>
 
