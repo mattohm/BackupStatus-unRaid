@@ -6,33 +6,7 @@ Icon="icon.png"
 // Path to settings file
 $settingsFile = "/boot/config/plugins/BackupStatus/settings.json";
 $settings = file_exists($settingsFile) ? json_decode(file_get_contents($settingsFile), true) : [];
-
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Gather dynamic labels and status file paths
-    $entries = [];
-    foreach ($_POST['labels'] as $index => $label) {
-        $statusFile = $_POST['status_files'][$index] ?? '';
-        if (!empty(trim($label)) && !empty(trim($statusFile))) {
-            $entries[] = [
-                'label' => htmlspecialchars(trim($label)),
-                'status_file' => htmlspecialchars(trim($statusFile)),
-            ];
-        }
-    }
-    $settings['entries'] = $entries;
-
-    // Save settings to file
-    if (!file_put_contents($settingsFile, json_encode($settings))) {
-        error_log("Failed to write settings to $settingsFile");
-        echo "<script>alert('Failed to save settings. Please check file permissions.');</script>";
-    } else {
-        echo "<script>alert('Settings updated successfully!');</script>";
-    }
-}
-
-// Default values
-$entries = $settings['entries'] ?? [['label' => 'Backup', 'status_file' => '/path/to/backup_status'], ['label' => 'RClone', 'status_file' => '/path/to/rclone_status']];
+$entries = $settings['entries'] ?? [];
 ?>
 
 <h3>Backup Status Settings</h3>
@@ -42,8 +16,13 @@ $entries = $settings['entries'] ?? [['label' => 'Backup', 'status_file' => '/pat
       <div class="entry-group">
         <label for="label_<?= $index ?>">Label <?= $index + 1 ?>:</label>
         <input type="text" id="label_<?= $index ?>" name="labels[]" value="<?= htmlspecialchars($entry['label']) ?>" required />
+
         <label for="status_file_<?= $index ?>">Status File:</label>
         <input type="text" id="status_file_<?= $index ?>" name="status_files[]" value="<?= htmlspecialchars($entry['status_file']) ?>" required />
+
+        <label for="log_file_<?= $index ?>">Log File:</label>
+        <input type="text" id="log_file_<?= $index ?>" name="log_files[]" value="<?= htmlspecialchars($entry['log_file']) ?>" required />
+
         <button type="button" class="remove-entry" onclick="removeEntry(this)">Remove</button>
       </div>
     <?php endforeach; ?>
@@ -58,17 +37,11 @@ $entries = $settings['entries'] ?? [['label' => 'Backup', 'status_file' => '/pat
 
 <h3>Backup Status</h3>
 <div>
-  <?php foreach ($entries as $index => $entry): ?>
-    <?php
-    // Determine the file's content and set the color accordingly
-    $statusFile = $entry['status_file'];
-    $statusContent = file_exists($statusFile) ? trim(file_get_contents($statusFile)) : 'Error';
-    $color = ($statusContent === '0') ? 'green' : 'red';
-    ?>
+  <?php foreach ($entries as $entry): ?>
     <div>
-      <span style="color: <?= $color ?>;"><?= date('Y-m-d') ?></span>
-      <span><?= htmlspecialchars($entry['label']) ?></span>
-      <span>(<?= htmlspecialchars($statusFile) ?>)</span>
+      <span><?= htmlspecialchars($entry['label']) ?>:</span>
+      <span><?= htmlspecialchars($entry['status_file']) ?></span>
+      <span>(<?= htmlspecialchars($entry['log_file']) ?>)</span>
     </div>
   <?php endforeach; ?>
 </div>
@@ -84,6 +57,8 @@ $entries = $settings['entries'] ?? [['label' => 'Backup', 'status_file' => '/pat
       <input type="text" id="label_${entryCount}" name="labels[]" required />
       <label for="status_file_${entryCount}">Status File:</label>
       <input type="text" id="status_file_${entryCount}" name="status_files[]" required />
+      <label for="log_file_${entryCount}">Log File:</label>
+      <input type="text" id="log_file_${entryCount}" name="log_files[]" required />
       <button type="button" class="remove-entry" onclick="removeEntry(this)">Remove</button>
     `;
     container.appendChild(newEntryGroup);
@@ -99,11 +74,11 @@ $entries = $settings['entries'] ?? [['label' => 'Backup', 'status_file' => '/pat
   .entry-group {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
   .entry-group input {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .remove-entry {
     background-color: red;
@@ -114,7 +89,6 @@ $entries = $settings['entries'] ?? [['label' => 'Backup', 'status_file' => '/pat
   }
   #add-entry {
     margin-top: 10px;
-    margin-bottom: 10px;
     padding: 5px 10px;
     background-color: green;
     color: white;
@@ -122,4 +96,26 @@ $entries = $settings['entries'] ?? [['label' => 'Backup', 'status_file' => '/pat
     cursor: pointer;
   }
 </style>
+
+<?php
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $labels = $_POST['labels'] ?? [];
+    $statusFiles = $_POST['status_files'] ?? [];
+    $logFiles = $_POST['log_files'] ?? [];
+    $newEntries = [];
+
+    for ($i = 0; $i < count($labels); $i++) {
+        $newEntries[] = [
+            'label' => htmlspecialchars(trim($labels[$i])),
+            'status_file' => htmlspecialchars(trim($statusFiles[$i])),
+            'log_file' => htmlspecialchars(trim($logFiles[$i])),
+        ];
+    }
+
+    // Save to settings file
+    file_put_contents($settingsFile, json_encode(['entries' => $newEntries]));
+    echo "<script>alert('Settings saved successfully!');</script>";
+}
+?>
 
