@@ -1,19 +1,45 @@
-<?
+<?php
+// Path to settings file
+$settingsFile = "/boot/config/plugins/BackupStatus/settings.json";
 
- $bu_date = shell_exec("/usr/bin/stat  /mnt/user/scripts/backupstatus.txt | grep Modify | awk '{print $2}'");
- $bu_code = shell_exec("/usr/bin/cat  /mnt/user/scripts/backupstatus.txt");
- $bu_color = 'green';
- if ($bu_code != 0)
-   $bu_color = 'red';
- $displays[] = "<span title='Borg'><font color='$bu_color'>$bu_date</font><small>Backup</small></span>";
+// Ensure the settings file exists
+if (!file_exists($settingsFile)) {
+    http_response_code(404);
+    echo "<span style='color: red;'>Error: Settings file not found</span>";
+    exit;
+}
 
- $rc_date = shell_exec("/usr/bin/stat  /mnt/user/scripts/rclonestatus.txt | grep Modify | awk '{print $2}'");
- $rc_code = shell_exec("/usr/bin/cat  /mnt/user/scripts/rclonestatus.txt");
- $rc_color = 'green';
- if ($rc_code != 0)
-   $rc_color = 'red';
- $displays[] = "<span title='RClone'><font color='$rc_color'>$rc_date</font><small>RClone</small></span>";
+// Load settings
+$settings = json_decode(file_get_contents($settingsFile), true);
+$entries = $settings['entries'] ?? [];
 
-if ($displays)
-    echo "<span id='status' style='margin-right:16px;font-weight: bold;cursor: pointer;'>".implode('&nbsp;', $displays)."</span>";
-?>
+$html = "<span id='status' style='margin-right:16px;font-weight: bold;cursor: pointer;'>";
+
+// Loop through each entry and generate HTML
+foreach ($entries as $entry) {
+    $statusFile = $entry['status_file'];
+    $label = $entry['label'];
+
+    // Check if the status file exists
+    if (file_exists($statusFile)) {
+        $content = trim(file_get_contents($statusFile));
+        $modifiedDate = date('Y-m-d', filemtime($statusFile));
+        $color = ($content === '0') ? 'green' : 'red';
+    } else {
+        $modifiedDate = 'File not found';
+        $color = 'red';
+    }
+
+    // Append the status HTML
+    $html .= "
+        <span title='{$label}'>
+          <font color='{$color}'>{$modifiedDate}</font>
+          <small>{$label}</small>
+        </span>&nbsp;";
+}
+
+$html .= "</span>";
+
+// Output the HTML
+echo $html;
+
