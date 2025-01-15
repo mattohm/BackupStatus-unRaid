@@ -15,7 +15,7 @@
 
 <PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;">
 
-<FILE Name="&plgPATH;/&plgNAME;.txz Min="6.2" Run="/sbin/upgradepkg --install-new">
+<FILE Name="https://github.com/mattohm/BackupStatus-unRaid/raw/refs/heads/main/packages/BackupStatus-2025.01.15.txz Min="6.2" Run="/sbin/upgradepkg --install-new">
 <URL>&bundleURL</URL>
 <MD5>&md5bundle;</MD5>
 </FILE>
