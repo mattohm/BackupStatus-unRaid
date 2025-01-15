@@ -15,7 +15,7 @@
 
 <FILE Name="&plgPATH;/BackupStatus.txz" Min="6.2" Run="/sbin/upgradepkg --install-new">
 <URL>&pkgURL;/BackupStatus.txz</URL>
-<MD5>41a99977c87e2089ac2387f2a7b7956b</MD5>
+<MD5>d3593a0446b8ba8f8cfdc42a5b9f3c6f</MD5>
 </FILE>
 
 <!--
@@ -30,7 +30,7 @@ removepkg &plgPATH;/*.txz
 echo ""
 echo "-----------------------------------------------------------"
 echo " &name; has been removed."
-echo " Copyright 2024, &author;"
+echo " Copyright 2025, &author;"
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
