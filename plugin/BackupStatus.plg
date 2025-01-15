@@ -15,8 +15,8 @@
 
 <PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;">
 
-<FILE Name="/boot/config/plugins/BackupStatus/BackupStatus-&bundleversion;-bundle.txz Min="6.2" Run="/sbin/upgradepkg --install-new">
-<URL>&pluginURL</URL>
+<FILE Name="&plgPATH;/&plgNAME;.txz Min="6.2" Run="/sbin/upgradepkg --install-new">
+<URL>&bundleURL</URL>
 <MD5>&md5bundle;</MD5>
 </FILE>
 
