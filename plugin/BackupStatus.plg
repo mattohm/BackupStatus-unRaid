@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "BackupStatus">
 <!ENTITY author    "mattohm">
-<!ENTITY version   "2024.03.01">
+<!ENTITY version   "2025.01.15">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/BackupStatus-unRaid/main">
 <!ENTITY pluginURL "&gitURL;/plugin/&name;.plg">
 <!ENTITY pkgURL    "&gitURL;/packages">
