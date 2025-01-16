@@ -1,21 +1,29 @@
-<?xml version='1.0'?>
+<?xml version='1.0' standalone='yes'?>
+
 <!DOCTYPE PLUGIN [
-<!ENTITY name "BackupStatus">
-<!ENTITY version "2025.10.15">
-<!ENTITY gitURL "https://raw.githubusercontent.com/&author;/&name;-unraid/master/">
-<!ENTITY pkgURL "&gitURL;/packages/BackupStatus-2025.10.15.txz">
-<!ENTITY md5sum "c6d134bd7d947e3ab89cab329cdf1e92">
+  <!ENTITY name			      	"BackupStatus">
+  <!ENTITY author		    	"mattohm">
+  <!ENTITY version		    	"2025.01.15">
+  <!ENTITY bundleversion		"2025.01.15">
+  <!ENTITY baseURL	  		"https://raw.githubusercontent.com/&author;/&name;-unraid/master/">
+  <!ENTITY pluginURL	  		"&baseURL;/plugin/BackupStatus.plg">
+  <!ENTITY bundleURL		  	"&baseURL;/packages/BackupStatus-&version;.txz">
+  <!ENTITY md5bundle	  		"c6d134bd7d947e3ab89cab329cdf1e92">
 ]>
 
-<PLUGIN name="&name;" version="&version;">
-  <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Min="6.9">
-    <URL>&pkgURL;</URL>
-    <MD5>&md5sum;</MD5>
+
+<PLUGIN name="&name;" 
+        author="&author;"
+	version="&version;" 
+	pluginURL="&pluginURL;">
+
+<!--
+Get bundle.
+-->
+
+  <FILE Name="/boot/config/plugins/&name;/&name;-&bundleversion;.txz" Run="upgradepkg --install-new">
+    <URL>&bundleURL;</URL>
+    <MD5>&md5bundle;</MD5>
   </FILE>
-  <INSTALL>
-    <COMMAND>installpkg /boot/config/plugins/&name;/&name;-&version;.txz</COMMAND>
-  </INSTALL>
-  <REMOVE>
-    <COMMAND>removepkg BackupStatus</COMMAND>
-  </REMOVE>
+
 </PLUGIN>
