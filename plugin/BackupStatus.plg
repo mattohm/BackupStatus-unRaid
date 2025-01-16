@@ -2,7 +2,7 @@
 
 <!DOCTYPE PLUGIN [
   <!ENTITY name			      	"BackupStatus">
-  <!ENTITY author		    		"mattohm">
+  <!ENTITY author		    	"mattohm">
   <!ENTITY version		    	"2025.01.15">
   <!ENTITY bundleversion		"2025.01.15">
   <!ENTITY pluginURL	  		"https://raw.githubusercontent.com/mattohm/BackupStatus/master/plugin/BackupStatus.plg">
@@ -11,12 +11,16 @@
 ]>
 
 
-<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;">
+<PLUGIN name="&name;" 
+        author="&author;"
+		version="&version;" 
+		pluginURL="&pluginURL;">
 
 <!--
 Get bundle.
 -->
-  <FILE Name="/boot/config/plugins/BackupStatus/BackupStatus-&bundleversion;.txz" Run="upgradepkg --install-new">
+
+  <FILE Name="/boot/config/plugins/&name;/&name;-&bundleversion;.txz" Run="upgradepkg --install-new">
     <URL>&bundleURL;</URL>
     <MD5>&md5bundle;</MD5>
   </FILE>
