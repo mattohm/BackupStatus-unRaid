@@ -13,8 +13,8 @@
 
 <PLUGIN name="&name;" 
         author="&author;"
-		version="&version;" 
-		pluginURL="&pluginURL;">
+	version="&version;" 
+	pluginURL="&pluginURL;">
 
 <!--
 Get bundle.
@@ -23,25 +23,6 @@ Get bundle.
   <FILE Name="/boot/config/plugins/&name;/&name;-&bundleversion;.txz" Run="upgradepkg --install-new">
     <URL>&bundleURL;</URL>
     <MD5>&md5bundle;</MD5>
-  </FILE>
-
-<!--
-The 'remove' script.
--->
-
-  <FILE Run="/bin/bash" Method="remove">
-    <INLINE>
-
-      removepkg &plgPATH;/*.txz
-
-      echo ""
-      echo "-----------------------------------------------------------"
-      echo " &name; has been removed."
-      echo " Copyright 2025, &author;"
-      echo " Version: &version;"
-      echo "-----------------------------------------------------------"
-      echo ""
-    </INLINE>
   </FILE>
 
 </PLUGIN>
