@@ -25,5 +25,18 @@ Get bundle.
     <URL>&bundleURL;</URL>
     <MD5>&md5bundle;</MD5>
   </FILE>
+<!--
+The 'remove' script.
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
 
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been uninstalled."
+echo "-----------------------------------------------------------"
+echo ""
+
+</INLINE>
+</FILE>
 </PLUGIN>
