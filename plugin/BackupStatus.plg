@@ -4,6 +4,7 @@
   <!ENTITY name                  "BackupStatus">
   <!ENTITY author                "mattohm">
   <!ENTITY version               "2025.01.16">
+  <!ENTITY launch                "Settings/&name;">
   <!ENTITY baseURL               "https://raw.githubusercontent.com/&author;/&name;-unraid/master/">
   <!ENTITY pluginURL             "&baseURL;/plugin/BackupStatus.plg">
   <!ENTITY bundleURL             "&baseURL;/packages/BackupStatus-&version;.txz">
@@ -14,13 +15,14 @@
 <PLUGIN name="&name;" 
   author="&author;"
   version="&version;" 
+  launch="&launch;"
   pluginURL="&pluginURL;">
 
 <!--
 Get bundle.
 -->
 
-  <FILE Name="/boot/config/plugins/&name;/&name;-&bundleversion;.txz" Run="upgradepkg --install-new">
+  <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
     <URL>&bundleURL;</URL>
     <MD5>&md5bundle;</MD5>
   </FILE>
