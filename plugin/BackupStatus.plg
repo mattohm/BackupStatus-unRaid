@@ -20,7 +20,7 @@
 Get bundle.
 -->
 
-  <FILE Name="&plgPath;/&name;-&version;.txz" Run="upgradepkg --install-new">
+  <FILE Name="/boot/config/plugins/&name;/&name;-&bundleversion;.txz" Run="upgradepkg --install-new">
     <URL>&bundleURL;</URL>
     <MD5>&md5bundle;</MD5>
   </FILE>
