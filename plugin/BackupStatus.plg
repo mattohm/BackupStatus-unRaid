@@ -30,7 +30,9 @@ The 'remove' script.
 -->
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
-
+rm -r /usr/local/emhttp/plugins/BackupStatus
+rm /boot/config/plugins/BackupStatus.plg
+rm -r /boot/config/plugins/BackupStatus
 echo ""
 echo "-----------------------------------------------------------"
 echo " &name; has been uninstalled."
