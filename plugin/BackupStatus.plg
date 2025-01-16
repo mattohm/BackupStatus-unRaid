@@ -1,19 +1,20 @@
-<?xml version='1.0'?>
+<?xml version='1.0' standalone='yes'?>
 
-  <!ENTITY name			"BackupStatus">
-  <!ENTITY author		"mattohm">
-  <!ENTITY version		"2025.01.16">
-  <!ENTITY baseURL	  	"https://raw.githubusercontent.com/&author;/&name;-unraid/master/">
-  <!ENTITY pluginURL	  	"&baseURL;/plugin/BackupStatus.plg">
-  <!ENTITY bundleURL		"&baseURL;/packages/BackupStatus-&version;.txz">
-  <!ENTITY md5bundle	        "da38fb97546ed4e294f908a1be653d25"
-  <!ENTITY plgPATH              "/boot/config/plugins/&name;">
-  <!ENTITY emhttp               "/usr/local/emhttp/plugins/&name;">
+<!DOCTYPE PLUGIN [
+  <!ENTITY name			      	"BackupStatus">
+  <!ENTITY author		    	"mattohm">
+  <!ENTITY version		    	"2025.01.16">
+  <!ENTITY bundleversion		"2025.01.16">
+  <!ENTITY baseURL	  		"https://raw.githubusercontent.com/&author;/&name;-unraid/master/">
+  <!ENTITY pluginURL	  		"&baseURL;/plugin/BackupStatus.plg">
+  <!ENTITY bundleURL		  	"&baseURL;/packages/BackupStatus-&version;.txz">
+  <!ENTITY md5bundle	  		"da38fb97546ed4e294f908a1be653d25">
 ]>
 
-<PLUGIN name="&name;"
+
+<PLUGIN name="&name;" 
         author="&author;"
-	version="&version;"
+	version="&version;" 
 	pluginURL="&pluginURL;">
 
 <!--
@@ -24,5 +25,5 @@ Get bundle.
     <URL>&bundleURL;</URL>
     <MD5>&md5bundle;</MD5>
   </FILE>
- 
+
 </PLUGIN>
