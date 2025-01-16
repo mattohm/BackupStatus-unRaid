@@ -1,10 +1,11 @@
 <?xml version='1.0'?>
-  <!ENTITY name			      	"BackupStatus">
-  <!ENTITY author		    	"mattohm">
-  <!ENTITY version		    	"2025.01.16">
-  <!ENTITY baseURL	  		    "https://raw.githubusercontent.com/&author;/&name;-unraid/master/">
-  <!ENTITY pluginURL	  		"&baseURL;/plugin/BackupStatus.plg">
-  <!ENTITY bundleURL		  	"&baseURL;/packages/BackupStatus-&version;.txz">
+
+  <!ENTITY name			"BackupStatus">
+  <!ENTITY author		"mattohm">
+  <!ENTITY version		"2025.01.16">
+  <!ENTITY baseURL	  	"https://raw.githubusercontent.com/&author;/&name;-unraid/master/">
+  <!ENTITY pluginURL	  	"&baseURL;/plugin/BackupStatus.plg">
+  <!ENTITY bundleURL		"&baseURL;/packages/BackupStatus-&version;.txz">
   <!ENTITY md5bundle	        "da38fb97546ed4e294f908a1be653d25"
   <!ENTITY plgPATH              "/boot/config/plugins/&name;">
   <!ENTITY emhttp               "/usr/local/emhttp/plugins/&name;">
@@ -12,8 +13,8 @@
 
 <PLUGIN name="&name;"
         author="&author;"
-	    version="&version;"
-	    pluginURL="&pluginURL;">
+	version="&version;"
+	pluginURL="&pluginURL;">
 
 <!--
 Get bundle.
@@ -23,26 +24,5 @@ Get bundle.
     <URL>&bundleURL;</URL>
     <MD5>&md5bundle;</MD5>
   </FILE>
-    <!--
-    The 'remove' script.
-    -->
-  <FILE Run="/bin/bash" Method="remove">
-    <INLINE>
-       # uninstall plugin
-	   removepkg &plgPATH;/*.txz
-	   rm -rf &emhttp;
-	   rm -rf &plgPATH;/*.tx
-	
-       echo ""
-       echo "-----------------------------------------------------------"
-       echo " &name; has been uninstalled."
-       echo " Please reboot your server to complete uninstall this plugin."
-       echo " Version: &version;"
-       echo "-----------------------------------------------------------"
-       echo ""
-
-       exit 0
-     </INLINE>
-   </FILE>
-	
+ 
 </PLUGIN>
