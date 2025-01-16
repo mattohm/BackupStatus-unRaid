@@ -13,9 +13,9 @@
 
 
 <PLUGIN name="&name;" 
-        author="&author;"
-	version="&version;" 
-	pluginURL="&pluginURL;">
+  author="&author;"
+  version="&version;" 
+  pluginURL="&pluginURL;">
 
 <!--
 Get bundle.
@@ -24,6 +24,27 @@ Get bundle.
   <FILE Name="/boot/config/plugins/&name;/&name;-&bundleversion;.txz" Run="upgradepkg --install-new">
     <URL>&bundleURL;</URL>
     <MD5>&md5bundle;</MD5>
+  </FILE>
+<!--
+The 'remove' script.
+-->
+  <FILE Run="/bin/bash" Method="remove">
+    <INLINE>
+    # uninstall plugin
+    removepkg &plgPATH;/*.txz
+    rm -rf &emhttp;
+    rm -rf &plgPATH;/*.tx
+
+    echo ""
+    echo "-----------------------------------------------------------"
+    echo " &name; has been uninstalled."
+    echo " Please reboot your server to complete uninstall this plugin."
+    echo " Version: &version;"
+    echo "-----------------------------------------------------------"
+    echo ""
+
+    exit 0
+    </INLINE>
   </FILE>
 
 </PLUGIN>
