@@ -1,14 +1,14 @@
 <?xml version='1.0' standalone='yes'?>
 
 <!DOCTYPE PLUGIN [
-  <!ENTITY name				"BackupStatus">
-  <!ENTITY author				"mattohm">
-  <!ENTITY version			"2025.01.15">
+  <!ENTITY name			      	"BackupStatus">
+  <!ENTITY author		    		"mattohm">
+  <!ENTITY version		    	"2025.01.15">
   <!ENTITY bundleversion		"2025.01.15">
-  <!ENTITY launch				"Settings/BackupStatus">
-  <!ENTITY pluginURL			"https://raw.githubusercontent.com/mattohm/BackupStatus/master/plugin/BackupStatus.plg">
-  <!ENTITY bundleURL			"https://raw.githubusercontent.com/mattohm/BackupStatus/master/packages/BackupStatus-2025.01.15.txz">
-  <!ENTITY md5bundle			"051920efd86b03fc856bfe0b55a8a0fb">
+  <!ENTITY launch			    	"Settings/BackupStatus">
+  <!ENTITY pluginURL	  		"https://raw.githubusercontent.com/mattohm/BackupStatus/master/plugin/BackupStatus.plg">
+  <!ENTITY bundleURL		  	"https://raw.githubusercontent.com/mattohm/BackupStatus/master/packages/BackupStatus-&version;.txz">
+  <!ENTITY md5bundle	  		"051920efd86b03fc856bfe0b55a8a0fb">
 ]>
 
 
