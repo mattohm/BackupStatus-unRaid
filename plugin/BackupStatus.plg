@@ -8,7 +8,7 @@
   <!ENTITY baseURL	  		"https://raw.githubusercontent.com/&author;/&name;-unraid/master/">
   <!ENTITY pluginURL	  		"&baseURL;/plugin/BackupStatus.plg">
   <!ENTITY bundleURL		  	"&baseURL;/packages/BackupStatus-&version;.txz">
-  <!ENTITY md5bundle	  		"7dffd0f61aa26be6ab327f57d76aea81">
+  <!ENTITY md5bundle	  		"d3593a0446b8ba8f8cfdc42a5b9f3c6f">
 ]>
 
 
